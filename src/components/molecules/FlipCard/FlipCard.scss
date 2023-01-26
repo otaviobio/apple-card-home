@@ -1,0 +1,248 @@
+.full-tile {
+  grid-column: span 2;
+
+  > .flip {
+    transform: rotateX(180deg);
+    z-index: 3;
+  }
+
+  .card-back {
+    transform: rotateX(180deg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 2rem;
+
+    .back-image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .phone-frame {
+        position: absolute;
+        top: 0;
+        left: 20%;
+        // z-index: 1;
+        width: 130%;
+        // height: 820px;
+        background-image: url("src/assets/iphone_screen.jpg");
+        background-size: 50.2%;
+        background-position: 18.5% 17%;
+        background-repeat: no-repeat;
+      }
+
+      .phone-screen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 570px;
+        height: 820px;
+      }
+    }
+  }
+}
+
+.half-tile {
+  grid-column: span 1;
+
+  > .flip {
+    transform: rotateY(180deg);
+    z-index: 3;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.back-card-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: 2;
+}
+
+.fade-in {
+  opacity: 0.5;
+  transition: opacity 1500ms;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: all 1s;
+  visibility: hidden;
+}
+
+.card-container {
+  height: 600px;
+  width: 100%;
+  border-radius: 2rem;
+  
+  &.test {
+    z-index: 3;
+  }
+
+  transform: translateY(100px);
+  opacity: 0;
+
+  &.show-card {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 1s;
+  }
+  
+  .card-inner {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+    border-radius: 2rem;
+    // z-index: 3;
+    perspective: 1600px;
+
+    h2 {
+      line-height: 1;
+      text-align: left;
+    }
+
+    .card-front,
+    .card-back {
+      height: 100%;
+      width: 100%;
+      border-radius: 2rem;
+      position: absolute;
+      backface-visibility: hidden;
+      box-shadow: 4px 12px 40px 6px rgba(0,0,0,0.09);
+      background-color: #ffffff;
+      z-index: 3;
+      
+      
+      button {
+        position: absolute;
+        cursor: pointer;
+        z-index: 3;
+      }
+    }
+    
+    .card-front {
+      box-sizing: border-box;
+
+      .card-front-btn {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+
+        &:hover > .plus-icon {
+          opacity: 0.4;
+        }
+      }
+
+      .plus-icon {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: #000000;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1.4rem;
+        padding: 0.2rem;
+      }
+    }
+  
+    .card-back {
+      box-sizing: border-box;
+      z-index: 3;
+      padding: 3rem 5rem;
+      // if you don't give the back of the card a background color or image ou will be able to see the front of the card through the back
+      background-color: #ffffff;
+      text-align: left;
+
+      h2 {
+        color: #666666;
+        font-size: 1rem;
+      }
+
+      p {
+        line-height: 1.381;
+        font-weight: 400;
+        letter-spacing: .011em;
+      }
+
+      .card-back-btn {
+          bottom: 2rem;
+          right: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          font-size: 1.4rem;
+          padding: 0.2rem;
+          
+          &:hover {
+            background-color: rgba(0,0,0,0.4);
+          }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+
+  .full-tile, .half-tile {
+    grid-column: span 1;
+
+    > .flip {
+      z-index: 3;
+    }
+
+    .card-front-bg {
+      border-radius: 0.5rem!important;
+    }
+
+    .card-back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h2 {
+        padding: 0;
+      }
+    }
+
+    .card-inner {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      transition: none;
+      transform-style: preserve-3d;
+      border-radius: 0.5rem!important;
+      // z-index: 3;
+      perspective: 1600px;
+    }
+  }
+
+  .back-card-overlay, .back-image {
+    display: none;
+  }
+
+  .card-container, .card-inner, .card-front, .card-back {
+    border-radius: 0.5rem!important;
+  }
+
+  .card-container {
+    min-height: 450px;
+  }
+}
