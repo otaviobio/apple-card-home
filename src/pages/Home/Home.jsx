@@ -13,45 +13,49 @@ export function Home() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const getStarted = getStartedRef.current;
-          const parallaxInner = parallaxInnerRef.current;
-          const footer = footerRef.current;
-          const top = footer.getBoundingClientRect().top;
+    const parallaxInner = parallaxInnerRef.current;
+    const getStarted = getStartedRef.current;
+    const footer = footerRef.current;
+    const top = footer.getBoundingClientRect().top;
 
-          // Track the y position of the getStarted div
-          let y = 0;
+    // Track the y position of the getStarted div
+    let y = 0;
 
-          // Add event listener to track the movement of the scroll
-          document.addEventListener("scroll", () => {
-            // Set the limit of the movement of the getStarted div within the parallaxInner div
-            const limit = parallaxInner.offsetHeight - getStarted.offsetHeight;
+    const updatePosition = () => {
+      // Set the limit of the movement of the getStarted div within the parallaxInner div
+      const limit = parallaxInner.offsetHeight - getStarted.offsetHeight;
 
-            // Get the relative position of the scroll within the parallaxInner div
-            const scroll = window.scrollY - parallaxInner.offsetTop;
+      // Get the relative position of the scroll within the parallaxInner div
+      const scroll = window.scrollY - parallaxInner.offsetTop;
 
-            // Calculate the new y position of the getStarted div
-            y = (scroll / parallaxInner.offsetHeight) * limit;
+      // Calculate the new y position of the getStarted div
+      y = (scroll / parallaxInner.offsetHeight) * limit;
 
-            // Update the state with the current scroll position
-            setScrollY(scroll);
+      // Update the state with the current scroll position
+      setScrollY(scroll);
 
-            // Apply the new y position to the getStarted div
-            getStarted.style.transform = `translateY(${y}px)`;
+      // Apply the new y position to the getStarted div
+      getStarted.style.transform = `translateY(${y}px)`;
 
-            //This is to stop the parallax effect
-            if (scroll > parallaxInner.offsetHeight / 2) {
-              getStarted.style.transform = `translateY(50vh)`;
-            } else {
-              getStarted.style.transform = `translateY(${y}px)`;
-            }
-          });
-        }
-      });
-    });
-    observer.observe(parallaxInnerRef.current);
+      //This is to stop the parallax effect
+      if (scroll > parallaxInner.offsetHeight / 2) {
+        getStarted.style.transform = `translateY(50vh)`;
+      } else {
+        getStarted.style.transform = `translateY(${y}px)`;
+      }
+
+      // Request the next animation frame
+      requestAnimationFrame(updatePosition);
+    };
+
+    // Call updatePosition once to initialize the y position
+    updatePosition();
+
+    // Add event listener to track the movement of the scroll
+    window.addEventListener("scroll", updatePosition);
+
+    // Clean up the event listener when the component is unmounted
+    return () => window.removeEventListener("scroll", updatePosition);
   }, []);
 
   return (
