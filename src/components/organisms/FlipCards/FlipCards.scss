@@ -39,7 +39,7 @@
         left: 0;
         // background-color: #ffffff;
         border-radius: 2rem;
-        background-image: url("src/assets/iphone_and_card.jpg");
+        background-image: url("../../../src/assets/iphone_and_card.jpg");
         background-size: 105%;
         background-repeat: no-repeat;
         background-position: 20px 65px;
@@ -79,7 +79,7 @@
         color: transparent!important;
         -webkit-background-clip: text;
         background-clip: text;
-        background-image: url("src/assets/white-background.jpg");
+        background-image: url("../../../src/assets/white-background.jpg");
         background-repeat: repeat-x;
         animation: slideIn 1.5s ease-in-out forwards;
       }
@@ -520,7 +520,7 @@
         left: 0;
         z-index: -1;
         border-radius: 2rem;
-        background-image: url("src/assets/apple_card_family.jpg");
+        background-image: url("../../../src/assets/apple_card_family.jpg");
         background-size: 100%;
         background-repeat: no-repeat;
         animation: fadeIn 1s ease-in-out forwards;
@@ -1440,7 +1440,7 @@
           color: transparent!important;
           -webkit-background-clip: text;
           background-clip: text;
-          background-image: url("src/assets/white-background.jpg");
+          background-image: url("../../../src/assets/white-background.jpg");
           background-repeat: repeat-x;
           animation: slideIn 1.5s ease-in-out forwards;
         }
@@ -1463,7 +1463,7 @@
         left: 5%;
         z-index: -1;
         overflow: hidden;
-        background-image: url("src/assets/lock.png");
+        background-image: url("../../../src/assets/lock.png");
         filter: saturate(1.3);
         animation: lock 2.25s steps(1) forwards;
         animation-delay: 1s;
@@ -1911,7 +1911,7 @@
         .card-front-bg {
           opacity: 0;
           top: 46.6%;
-          background-image: url("src/assets/apple_card_family_mobile.jpg");
+          background-image: url("../../../src/assets/apple_card_family_mobile.jpg");
           animation: fadeInMobile 1s ease-in-out forwards;
           animation-delay: 1s;
         }
