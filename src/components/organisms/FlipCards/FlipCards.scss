@@ -184,6 +184,7 @@
       p {
         opacity: 0;
         background: linear-gradient(90deg, #61a87b, #69bf74 25%, #b8ce66 84%);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-repeat: repeat;
@@ -388,6 +389,7 @@
     .card-front {
       h2 {
         background: linear-gradient(90deg, #90ca5a, #d7d65a 50%, #dac355 70%);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-repeat: repeat;
@@ -1710,6 +1712,7 @@
         letter-spacing: -.005em;
         padding-left: 3rem;
         background: linear-gradient(137deg, #636263 0%, #f0f0f0 50%, #5b5a5a 100%);
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-repeat: repeat;
