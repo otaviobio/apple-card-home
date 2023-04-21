@@ -3,7 +3,6 @@ import "./FlipCard.scss";
 import { FiPlus } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import iphoneHardware from "../../../assets/iphone_hardware.png";
-import iphoneScreen from "../../../assets/iphone_screen.jpg";
 
 
 export function FlipCard({
