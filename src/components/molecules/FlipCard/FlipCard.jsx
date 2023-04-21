@@ -35,7 +35,7 @@ export function FlipCard({
     observer.observe(ref.current);
     return () => observer.disconnect();
   }, [ref]);
-
+  
   return (
     <>
       <div
